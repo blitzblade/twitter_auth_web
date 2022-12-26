@@ -22,6 +22,9 @@ const AuthorizeTweep = () => {
                      console.log(res.data);
                      const data = res.data;
 
+                     localStorage.setItem('consumer_key', details.consumer_key);
+                     localStorage.setItem('consumer_secret', details.consumer_secret)
+
                      if (data.redirect_url === null){
                         console.log("redirect url is null");
                       }else{
