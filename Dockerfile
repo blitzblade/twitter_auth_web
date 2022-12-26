@@ -14,7 +14,9 @@ RUN npm install
 
 
 # add app
-COPY . /app
+COPY src /app/
+COPY public /app/
+COPY .env /app/
 
 # start app
 CMD ["npm", "start"]
