@@ -1,14 +1,14 @@
 
 import { useState } from 'react';
 import axios from 'axios';
+import env from 'react-dotenv'
 
 const AuthorizeTweep = () => {
-    const API_URL = "http://localhost:5001"
+    const API_URL = env.API_URL;
     let initialState = {
         consumer_key: "",
         consumer_secret: "",
-        callback_url: "",
-        frontend_callback_url: ""
+        callback_url: ""
     }
     const [details, setDetails] = useState(initialState);
     const handleSubmit = (event) => {
@@ -45,10 +45,7 @@ const AuthorizeTweep = () => {
                 <input type="text" placeholder="Callback URL" value={details.callback_url}
                     onChange={(event)=> setDetails({...details, callback_url: event.target.value})}/>
                 </div>
-                <div>
-                <input type="text" placeholder="Frontend Callback URL" value={details.frontend_callback_url}
-                    onChange={(event)=> setDetails({...details, frontend_callback_url: event.target.value})}/>
-                </div>
+            
                 
                 <div>
                 <input type="button" value="Authorize" onClick={handleSubmit} />

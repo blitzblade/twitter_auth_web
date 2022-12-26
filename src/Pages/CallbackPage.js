@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import env from 'react-dotenv';
 
 const CallbackPage = () => {
-    const API_URL = "http://localhost:5001"
     const [details, setDetails] = useState({user_id: "",username: "xxx", access_token: "xxx", access_token_secret: "xxx"})
     useEffect(() => {
         //pick params and send api request to get final user data
@@ -14,7 +14,7 @@ const CallbackPage = () => {
             _params = { oauth_token: _params[0][1], oauth_verifier: _params[1][1]};
             console.log(_params);
             
-            axios.get(`${API_URL}/api/auth_twitter_callback`,
+            axios.get(`${env.API_URL}/api/auth_twitter_callback`,
             { params: _params })
             .then((data)=>{
                 console.log(data)
